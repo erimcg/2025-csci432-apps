@@ -20,7 +20,7 @@
 }
 
 :slotted(*) {
-    font-size: var(--fs-700);
+    font-size: var(--fs-600);
 }
 
 </style>

@@ -5,19 +5,24 @@ import Header from '../components/Header.vue'
 <template>
     <Header>
         <nav>
-            <RouterLink to="/Login">Login</RouterLink>
+            <RouterLink to="/signin">Sign In</RouterLink>
         </nav>
     </Header>
 
     <main class="padding-block-700">
-        <section class="container">
+        <section class="container center vertical">
             <h1 class="fs-primary-heading">Home</h1>
-        </section>
-
-        <section class="container">
             <p>Welcome to me home.</p>
         </section>
     </main>
 </template>
+
+<style scoped>
+
+:deep(a) {
+    text-decoration: none;
+}
+
+</style>
 
 
