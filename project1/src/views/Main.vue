@@ -4,13 +4,32 @@ import { useRouter } from 'vue-router'
 
 const router = useRouter()
 
-function signOut(event) {
-	// maybe remove something from localStorage?
-	console.log("clicked")
+async function signOut(event) {
 
-	router.push({
-		name: 'home'
-	})
+	const token = localStorage.getItem("token")
+
+	const url = 'https://hap-app-api.azurewebsites.net/user/logout'
+
+	const options = {
+		method: "POST",
+		headers: {
+			Authorization: `Bearer ${token}`,
+		},
+	}
+
+	let response = await fetch(url, options)
+
+	if (response.ok) {
+		if (response.status === 200) {
+			//TODO: Remove token and username from localStorage
+
+			router.push({
+				name: 'home'
+			})
+		}
+	} else {
+		console.log("HTTP-Error: " + response.status)
+	}
 }
 </script>
 
@@ -27,3 +46,10 @@ function signOut(event) {
 		</section>
 	</main>
 </template>
+
+<style scoped>
+
+a { text-decoration: none; }
+a:hover { cursor: pointer; }
+
+</style>

@@ -22,7 +22,6 @@ import Header from '../components/Header.vue'
 :deep(a) {
     text-decoration: none;
 }
-
 </style>
 
 
