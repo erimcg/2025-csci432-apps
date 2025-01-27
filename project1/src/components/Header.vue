@@ -4,8 +4,8 @@
 </script>
 
 <template>
-    <header>
-        <div class="container">
+    <header class="padding-block-700">
+        <div class="container spread">
             <Logo />
             <slot></slot>
         </div>
@@ -13,11 +13,6 @@
 </template>
 
 <style scoped>
-.container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
 
 :slotted(*) {
     font-size: var(--fs-600);

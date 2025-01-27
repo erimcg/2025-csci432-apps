@@ -8,7 +8,7 @@ async function signIn(e) {
 	e.preventDefault()
 
 	// TODO: get email and password from the form
-	const email = "joe1@example.com"
+	const email = "joe2@example.com"
 	const password = "test1234"
 
 	const data = { email, password }
