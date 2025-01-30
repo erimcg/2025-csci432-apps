@@ -6,8 +6,12 @@
 <template>
     <header class="padding-block-700">
         <div class="container spread">
-            <Logo />
-            <slot></slot>
+            <Logo>
+                <template #logoTitle>
+                    <slot name="logoTitle"></slot>
+                </template>
+            </Logo>
+            <slot name="links"></slot>
         </div>
     </header>
 </template>
