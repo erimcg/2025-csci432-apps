@@ -82,7 +82,7 @@ function reset(e) {
 
 		<section>
 			<h1>{{ title }}</h1>
-			<input type="text" :value="title" size="30">
+			<input type="text" :value="title" size="30" v-memo="[title]">
 			<button @click="title += String.fromCodePoint(0x1f52a)">Append to ref</button>
 		</section>
 
