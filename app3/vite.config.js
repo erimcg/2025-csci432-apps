@@ -6,6 +6,7 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 
 // https://vite.dev/config/
 export default defineConfig({
+  base: '/work/teaching/courses/csci432/2025spring/apps/app3/',
   plugins: [
     vue(),
     vueDevTools(),
