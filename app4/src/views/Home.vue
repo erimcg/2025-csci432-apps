@@ -1,64 +1,51 @@
 <script setup>
 import { ref } from 'vue'
+
+import Toast from '@/components/Toast.vue';
 import Modal from '@/components/Modal.vue';
+import Gunner from '@/components/Gunner.vue'
 
-const showModal = ref(false)
-
+// Toast
 const message = ref('')
-const showMessage = ref(false)
 
-function openModal(e) {
-	console.log('opening modal')
-	showModal.value = true
-}
-
-function closeModal(e) {
-	if (e.target !== e.currentTarget)
-		return
- 
-	console.log('closing modal')
-	showModal.value = false
-}
+// Modal
+const modal = ref(null)
 
 function cancel() {
-	showModal.value = false
-
 	message.value = 'Cancelled'
-	showMessage.value = true
-	setTimeout(() => showMessage.value = false, 2000)
+	modal.value.close()
 }
 
 function save() {
-	showModal.value = false
-
-	message.value = 'Saved'
-	showMessage.value = true
-	setTimeout(() => showMessage.value = false, 2000)
+	message.value = 'Saved ' + name.value
+	modal.value.close()
 }
+
+const name = ref('')
 
 </script>
 
 <template>
 	<main class="flex col justify-center align-center">
-		<button @click="openModal">
+		<button @click="modal.open()">
 			<img src="../assets/icons/add_24dp_5F6368_FILL0_wght400_GRAD0_opsz24.svg" class="icon" />
 		</button>
 		
-		<span v-show="showMessage" class="toast">{{ message }}</span>
+		<Toast :message></Toast>
 
-		<img class="runner" src="../assets/running_dog.gif">
+		<Gunner></Gunner>
 	</main>
 
-	<Modal v-show="showModal" @close.prevent="closeModal">
+	<Modal ref="modal">
 		<template #header>
 			<h1 class="primary-heading">Title</h1>
 		</template>
 		<template #main>
-			<p>Main</p>
+			<input v-model="name" type="text">
 		</template>
 		<template #footer>
-			<button @click="cancel">Cancel</button>
-			<button @click="save">Save</button>
+			<button @click.stop="cancel">Cancel</button>
+			<button @click.stop="save">Save</button>
 		</template>
 	</Modal>
 
@@ -69,32 +56,6 @@ function save() {
 main {
 	height: 100%;
 	position: relative;
-}
-
-.runner {
-	position: absolute;
-	left: -2000px;
-	animation: 36s ease-in-out 0s infinite normal run;
-}
-
-@keyframes run {
-	from {
-		left: -8000px;
-	}
-
-	49% {
-		transform: rotateY(0deg);
-	}
-
-	50% {
-		left: 8000px;
-		transform: rotateY(180deg);
-	}
-
-	to {
-		left: -8000px;
-		transform: rotateY(180deg);
-	}
 }
 
 </style>

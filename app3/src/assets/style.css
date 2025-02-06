@@ -313,7 +313,7 @@ button:disabled {
     background-color: var(--clr-neutral-200);
 }
 
-.back-button:hover {
+.round-button:hover {
     border-radius: 50%;
     background-color: var(--clr-neutral-200);
 }

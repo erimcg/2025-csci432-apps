@@ -1,16 +1,38 @@
 <script setup>
+import { ref } from 'vue'
 
+const showModal = ref(false)
+
+defineExpose({
+    open, close
+})
+
+function open() {
+    showModal.value = true
+}
+
+function close() {
+    showModal.value = false
+}
+
+/* Unexposed */
+
+function hideModal(e) {
+    if (e.target !== e.currentTarget) {
+        return
+    }
+    showModal.value = false
+}
 </script>
 
-
 <template>
-    <div class="modal-backdrop" @click="$emit('close', $event)">
+    <div v-show="showModal" class="modal-backdrop" @click.stop="hideModal">
         <div class="modal">
             <header>
                 <slot name="header"></slot>
                 <img src="../assets/icons/close_24dp_5F6368_FILL0_wght400_GRAD0_opsz24.svg" 
                     class="icon button modal-button"
-                    @click="$emit('close', $event)" />
+                    @click.stop="hideModal" />
             </header>
 
             <main>

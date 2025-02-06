@@ -348,14 +348,3 @@ a:visited {
     width: 32px;
     margin-inline: var(--size-200);
 }
-
-/* Toast */
-
-.toast {
-    position: fixed;
-    bottom: 20%;
-
-    padding: 0.25em 1.5em;
-
-    background-color: var(--clr-neutral-200);
-}
