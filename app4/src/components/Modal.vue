@@ -15,24 +15,16 @@ function close() {
     showModal.value = false
 }
 
-/* Unexposed */
-
-function hideModal(e) {
-    if (e.target !== e.currentTarget) {
-        return
-    }
-    showModal.value = false
-}
 </script>
 
 <template>
-    <div v-show="showModal" class="modal-backdrop" @click.stop="hideModal">
+    <div v-show="showModal" class="modal-backdrop" @click.stop.self="close">
         <div class="modal">
             <header>
                 <slot name="header"></slot>
                 <img src="../assets/icons/close_24dp_5F6368_FILL0_wght400_GRAD0_opsz24.svg" 
                     class="icon button modal-button"
-                    @click.stop="hideModal" />
+                    @click.stop.self="close" />
             </header>
 
             <main>
