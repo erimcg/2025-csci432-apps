@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, useTemplateRef } from 'vue'
 
 import Toast from '@/components/Toast.vue';
 import Modal from '@/components/Modal.vue';
@@ -9,15 +9,17 @@ import Gunner from '@/components/Gunner.vue'
 const message = ref('')
 
 // Modal
-const modal = ref(null)
+const modal = useTemplateRef('name-modal')
 
 function cancel() {
 	message.value = 'Cancelled'
+	name.value = ''
 	modal.value.close()
 }
 
 function save() {
 	message.value = 'Saved ' + name.value
+	name.value = ''
 	modal.value.close()
 }
 
@@ -36,7 +38,7 @@ const name = ref('')
 		<Gunner></Gunner>
 	</main>
 
-	<Modal ref="modal">
+	<Modal ref="name-modal">
 		<template #header>
 			<h1 class="primary-heading">Title</h1>
 		</template>
