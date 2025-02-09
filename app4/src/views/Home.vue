@@ -11,16 +11,16 @@ const message = ref('')
 // Modal
 const modal = useTemplateRef('name-modal')
 
-function cancel() {
+function cancel(e) {
 	message.value = 'Cancelled'
 	name.value = ''
-	modal.value.close()
+	modal.value.close(e)
 }
 
-function save() {
+function save(e) {
 	message.value = 'Saved ' + name.value
 	name.value = ''
-	modal.value.close()
+	modal.value.close(e)
 }
 
 const name = ref('')

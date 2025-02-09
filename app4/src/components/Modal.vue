@@ -11,20 +11,21 @@ function open() {
     showModal.value = true
 }
 
-function close() {
+function close(e) {
+    console.log('on close')
+    console.log('t: ' + e.target + ' ct: ' + e.currentTarget)
     showModal.value = false
 }
 
 </script>
 
 <template>
-    <div v-show="showModal" class="modal-backdrop" @click.stop.self="close">
+    <div v-show="showModal" class="modal-backdrop" @click.self="close">
         <div class="modal">
             <header>
                 <slot name="header"></slot>
-                <img src="../assets/icons/close_24dp_5F6368_FILL0_wght400_GRAD0_opsz24.svg" 
-                    class="icon button modal-button"
-                    @click.stop.self="close" />
+                <img src="../assets/icons/close_24dp_5F6368_FILL0_wght400_GRAD0_opsz24.svg"
+                    class="icon button modal-button" @click.stop="close" />
             </header>
 
             <main>
@@ -77,5 +78,9 @@ footer {
     justify-content: center;
     align-items: center;
     margin-top: var(--size-400);
+}
+
+.highlight {
+    background-color: yellow;
 }
 </style>
