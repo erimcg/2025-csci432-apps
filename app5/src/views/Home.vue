@@ -42,6 +42,7 @@ function add() {
 		date: new Date(newDate.value).toISOString()
 	
 	})
+	
 	console.log(items.value[items.value.length - 1])
 
 	newFirstName.value = ''
@@ -58,7 +59,9 @@ function add() {
 		</section>
 
 		<section class="grid-panel middle vline">
-			<Message v-for="item in items" :first-name="item.firstName" :last-name="item.lastName"
+			<Message v-for="item in items" 
+				:first-name="item.firstName" 
+				:last-name="item.lastName"
 				:date="formatDate(item.date)"></Message>
 		</section>
 
