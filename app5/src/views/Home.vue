@@ -55,10 +55,12 @@ function add() {
 <template>
 	<main>
 		<section class="grid-panel">
+			<h1 class="primary-heading">A Single Card</h1>
 			<Message :first-name :last-name :date="formatDate(date)"></Message>
 		</section>
 
 		<section class="grid-panel middle vline">
+			<h1 class="primary-heading">A List of Cards</h1>
 			<Message v-for="item in items" 
 				:first-name="item.firstName" 
 				:last-name="item.lastName"
@@ -67,17 +69,18 @@ function add() {
 
 		<section class="grid-panel bottom vline">
 			<div class="form">
+				<h1 class="primary-heading">Add New Card</h1>
 				<div>
 					<div>
-						<h1 class="primary-heading">First name</h1>
+						<h1 class="secondary-heading">First name</h1>
 						<input v-model="newFirstName">
 					</div>
 					<div>
-						<h1 class="primary-heading">Last name</h1>
+						<h1 class="secondary-heading">Last name</h1>
 						<input v-model="newLastName">
 					</div>
 					<div>
-						<h1 class="primary-heading">Date</h1>
+						<h1 class="secondary-heading">Date</h1>
 						<input type="datetime-local" v-model="newDate">
 					</div>
 				</div>
