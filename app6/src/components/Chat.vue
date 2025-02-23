@@ -13,7 +13,7 @@ const textMessage = ref('')
 let i = 0
 
 function send() {
-    toast.value.setMessage(`Message sent to ${props.id}`)
+    toast.value.setMessage(`Pretending message sent to ${props.id}`)
     textMessage.value = ''
 }
 </script>
