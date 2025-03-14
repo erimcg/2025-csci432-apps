@@ -1,17 +1,25 @@
 <script setup>
-import { Suspense } from 'vue';
-import Tabs from './Tabs-v1.vue';
+import { defineAsyncComponent } from 'vue';
+import Tabs from './Tabs-v2.vue';
 
 const tabs = [
-    { title: 'A', componentName: 'CompA' },
-    { title: 'B', componentName: 'CompB' }
+    {
+        title: 'A', component: defineAsyncComponent(() =>
+            import('./tabs/CompA.vue')
+        )},
+    {
+        title: 'B', component: defineAsyncComponent(() =>
+            import('./tabs/CompB.vue')
+        )}
 ]
 </script>
 
 <template>
     <section>
         <h1 class="title">Dynamic Components 3</h1>
-        <Tabs :tabs :selected-index="0" />
+        <Suspense>
+            <Tabs :tabs :selected-index="0" />
+        </Suspense>
     </section>
 </template>
 

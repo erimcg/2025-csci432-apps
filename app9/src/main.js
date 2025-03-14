@@ -15,11 +15,5 @@ app.use(router)
 
 app.component('CompOne', CompOne)
     .component('CompTwo', CompTwo)
-    .component('CompA', defineAsyncComponent(() =>
-        import('./components/tabs/CompA.vue')
-    ))
-    .component('CompB', defineAsyncComponent(() =>
-        import('./components/tabs/CompB.vue')
-    ))
 
 app.mount('#app')
